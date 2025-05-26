@@ -1,0 +1,57 @@
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #fce4ec;
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #444;
+  font-weight: bold;
+}
+
+select, input[type="text"], input[type="color"], button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.job-section {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* ألوان خاصة بكل مهنة */
+.doctor { background-color: #e3f2fd; }
+.dentist { background-color: #fde2e2; }
+.engineer { background-color: #e8f5e9; }
+.pharmacist { background-color: #f0f4c3; }
+.lawyer { background-color: #f3e5f5; }
+.teacher { background-color: #fff9c4; }
+.architect { background-color: #e0f7fa; }
+.chemist { background-color: #ede7f6; }
+.writer { background-color: #fbe9e7; }
+.photographer { background-color: #fce4ec; }
+

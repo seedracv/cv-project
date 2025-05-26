@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نموذج تعبئة السيرة الذاتية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .section-title {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- المحتوى هون -->
+  <h1>صفحة تعبئة البيانات</h1>
+  <p>يرجى إدخال المعلومات الخاصة بك</p>
+
+</body>
+</html>
+
+
+<form>
+    <h2 style="text-align:center;">نموذج تعبئة السيرة الذاتية</h2>
+
+    <div class="section-title">المعلومات الشخصية</div>
+
+    <label for="firstName">الاسم:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">الكنية:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="phone">رقم الموبايل:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="email">البريد الإلكتروني:</label>
+    <input type="email" id="email" name="email" required>
+
+    <div class="section-title">المؤهل العلمي</div>
+
+    <label for="degree">المرحلة العلمية:</label>
+    <input type="text" id="degree" name="degree" placeholder="مثلاً: بكالوريوس، ماجستير..." required>
+
+    <label for="university">اسم الجامعة:</label>
+    <input type="text" id="university" name="university" required>
+
+    <label for="major">الاختصاص:</label>
+    <input type="text" id="major" name="major" required>
+
+    <div class="section-title">الخبرات العملية</div>
+
+    <label for="companyName">اسم الشركة أو المؤسسة:</label>
+    <input type="text" id="companyName" name="companyName">
+
+    <label for="position">الوظيفة:</label>
+    <input type="text" id="position" name="position">
+
+    <label for="duration">مدة العمل:</label>
+    <input type="text" id="duration" name="duration" placeholder="مثلاً: من 2021 إلى 2023">
+
+    <div class="section-title">الخبرات الذاتية والتدريبية</div>
+
+    <label for="skills">الخبرات الذاتية:</label>
+    <textarea id="skills" name="skills" rows="4" placeholder="اكتب خبراتك الذاتية هنا..."></textarea>
+
+    <label for="trainings">الدورات التدريبية:</label>
+    <textarea id="trainings" name="trainings" rows="4" placeholder="اكتب تفاصيل الدورات التدريبية هنا..."></textarea>
+
+    <div class="section-title">اللغات</div>
+
+    <label for="languages">اللغات التي تتقنها:</label>
+    <textarea id="languages" name="languages" rows="3" placeholder="مثلاً: العربية (ممتاز)، الإنجليزية (جيد جداً)، الفرنسية (مبتدئ)..."></textarea>
+    <button type="button" onclick="validateForm()">تحقق من البيانات</button>
+<p id="errorMsg" style="color: red;"></p>
+<p id="successMsg" style="color: green;"></p>
+
+      <script src="style.js"></script>
+      <script>
+        function validateForm() {
+          const firstName = document.getElementById("firstName").value.trim();
+          const lastName = document.getElementById("lastName").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const email = document.getElementById("email").value.trim();
+      
+          const errorMsg = document.getElementById("errorMsg");
+          const successMsg = document.getElementById("successMsg");
+      
+          errorMsg.textContent = "";
+          successMsg.textContent = "";
+      
+          let hasError = false;
+      
+          // التحقق من الاسم
+          if (firstName === "") {
+            errorMsg.textContent += "يرجى ملء الاسم. ";
+            hasError = true;
+          } else if (!/^[\u0600-\u06FF\s]+$/.test(firstName)) {
+            errorMsg.textContent += "الاسم يجب أن يكون باللغة العربية. ";
+            hasError = true;
+          }
+      
+          // التحقق من الكنية
+          if (lastName === "") {
+            errorMsg.textContent += "يرجى ملء الكنية. ";
+            hasError = true;
+          } else if (!/^[\u0600-\u06FF\s]+$/.test(lastName)) {
+            errorMsg.textContent += "الكنية يجب أن تكون باللغة العربية. ";
+            hasError = true;
+          }
+      
+          // التحقق من رقم الموبايل
+          if (phone === "") {
+            errorMsg.textContent += "يرجى ملء رقم الموبايل. ";
+            hasError = true;
+          } else if (!/^09\d{8}$/.test(phone)) {
+            errorMsg.textContent += "رقم الهاتف يجب أن يبدأ بـ 09 ويتكون من 10 أرقام. ";
+            hasError = true;
+          }
+      
+          // التحقق من البريد الإلكتروني
+          if (email === "") {
+            errorMsg.textContent += "يرجى ملء البريد الإلكتروني. ";
+            hasError = true;
+          } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+            errorMsg.textContent += "يرجى إدخال بريد إلكتروني صحيح. ";
+            hasError = true;
+          }
+      
+          // إذا ما في أخطاء
+          if (!hasError) {
+            successMsg.textContent = "تم التحقق من البيانات بنجاح!";
+          }
+        }
+      </script>
+      
+      
+    
+      
+      
+    
+    </body>
+    </html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تعبئة السيرة الذاتية</title>
+  <style>
+    body {
+      background-color: #fce4ec; /* لون الخلفية */
+    }
+  </style>
+</head>
+<body>
+  <!-- محتوى تعبئة البيانات الخاص بك هنا -->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    
+
+    <label for="job">اختر المهنة:</label>
+    <select id="job" onchange="changeForm()">
+      <option value="">-- اختر --</option>
+      <option value="doctor">طبيب</option>
+      <option value="dentist">طبيب أسنان</option>
+      <option value="engineer">مهندس</option>
+      <option value="pharmacist">صيدلاني</option>
+      <option value="lawyer">محامي</option>
+      <option value="teacher">معلم</option>
+      <option value="architect">معماري</option>
+      <option value="chemist">كيميائي</option>
+      <option value="writer">كاتب</option>
+      <option value="photographer">مصور</option>
+    </select>
+
+    <div>
+      
+  
+      
+      <label for="fontSelect">اختيار الخط:</label>
+      <select id="fontSelect" onchange="updateFont()">
+        <option value="Cairo">Cairo</option>
+        <option value="Arial">Arial</option>
+        <option value="Tahoma">Tahoma</option>
+        <option value="Verdana">Verdana</option>
+      </select>
+    </div>
+    
+    <form id="cv-form">
+      <div id="form-fields" class="job-section"></div>
+    </form>
+    
+  </div>
+  <script src="script.js"></script>
+  <!-- محتوى تعبئة البيانات الخاص بك هنا -->
+</body>
+</html>
+</body>
+</html>
+<div class="cv-container" id="preview" style="display: none; background-color: #fff; padding: 20px; border-radius: 10px; margin-top: 20px;">
+  
+  <h2>السيرة الذاتية</h2>
+  <p><strong>الاسم:</strong> <span id="pName"></span></p>
+  <p><strong>الكنية:</strong> <span id="pLast"></span></p>
+  <p><strong>رقم الموبايل:</strong> <span id="pPhone"></span></p>
+  <p><strong>البريد الإلكتروني:</strong> <span id="pEmail"></span></p>
+  <p><strong>المرحلة العلمية:</strong> <span id="pDegree"></span></p>
+  <p><strong>اسم الجامعة:</strong> <span id="pUniversity"></span></p>
+  <p><strong>الاختصاص:</strong> <span id="pMajor"></span></p>
+  <p><strong>اسم الشركة:</strong> <span id="pCompany"></span></p>
+  <p><strong>الوظيفة:</strong> <span id="pJob"></span></p>
+  <p><strong>مدة العمل:</strong> <span id="pDuration"></span></p>
+  <p><strong>الخبرات الذاتية:</strong> <span id="pSkills"></span></p>
+  <p><strong>الدورات التدريبية:</strong> <span id="pTrainings"></span></p>
+  <p><strong>اللغات:</strong> <span id="pLanguages"></span></p>
+  <button onclick="editCV()">تعديل</button>
+  <button onclick="downloadPDF()">تحميل PDF</button>
+</div>
+<!-- زر المعاينة -->
+<button type="button" onclick="generateCV()">معاينة السيرة الذاتية</button>
+<!-- سكريبت المعاينة والتعديل والتحميل -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  function generateCV() {
+    document.getElementById('pName').innerText = document.getElementById('firstName').value;
+    document.getElementById('pLast').innerText = document.getElementById('lastName').value;
+    document.getElementById('pPhone').innerText = document.getElementById('phone').value;
+    document.getElementById('pEmail').innerText = document.getElementById('email').value;
+    document.getElementById('pDegree').innerText = document.getElementById('degree').value;
+    document.getElementById('pUniversity').innerText = document.getElementById('university').value;
+    document.getElementById('pMajor').innerText = document.getElementById('major').value;
+    document.getElementById('pCompany').innerText = document.getElementById('companyName').value;
+    document.getElementById('pJob').innerText = document.getElementById('position').value;
+    document.getElementById('pDuration').innerText = document.getElementById('duration').value;
+    document.getElementById('pSkills').innerText = document.getElementById('skills').value;
+    document.getElementById('pTrainings').innerText = document.getElementById('trainings').value;
+    document.getElementById('pLanguages').innerText = document.getElementById('languages').value;
+
+    document.getElementById('preview').style.display = 'block';
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  function editCV() {
+    document.getElementById('preview').style.display = 'none';
+  }
+
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    let y = 10;
+
+    doc.setFont("Cairo");
+    doc.setFontSize(12);
+    doc.text("السيرة الذاتية", 105, y, null, null, 'center');
+    y += 10;
+
+    const fields = [
+      ['الاسم', 'pName'],
+      ['الكنية', 'pLast'],
+      ['رقم الموبايل', 'pPhone'],
+      ['البريد الإلكتروني', 'pEmail'],
+      ['المرحلة العلمية', 'pDegree'],
+      ['اسم الجامعة', 'pUniversity'],
+      ['الاختصاص', 'pMajor'],
+      ['اسم الشركة', 'pCompany'],
+      ['الوظيفة', 'pJob'],
+      ['مدة العمل', 'pDuration'],
+      ['الخبرات الذاتية', 'pSkills'],
+      ['الدورات التدريبية', 'pTrainings'],
+      ['اللغات', 'pLanguages']
+    ];
+
+    fields.forEach(([label, id]) => {
+
+      y += 10;
+    });
+
+    doc.save("CV.pdf");
+  }
+</script>
+<button>إرسال البيانات</button>
+
+
+  
